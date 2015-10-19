@@ -53,6 +53,7 @@ $(function() {
     $('#insertWatchlist').click( function () {
         for (var i = 0; i < mainTable.rows('.active').data().length; i++) {
             var id = mainTable.rows('.active').data()[i].id;
+            var name = mainTable.rows('.active').data()[i].name;
             $.ajax({
                 type: 'POST',
                 url: "manageWatchList.php",
@@ -67,7 +68,7 @@ $(function() {
                             }
                         }
                         if (!isFound) {
-                            watchlistTable.row.add({id: result}).draw(false);
+                            watchlistTable.row.add({id: id, name: name}).draw(false);
                         }
                     } else {
                         alert("Maximum(100) exceeded");

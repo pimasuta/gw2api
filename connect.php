@@ -40,15 +40,14 @@
         
         public function insertWatchList($id) {
             if (!empty($id)) {
-                if ($result = mysqli_query($this->con, "SELECT * FROM item_watchlist")) {
-                    $rowcount = mysqli_num_rows($result);
+                if ($query = mysqli_query($this->con, "SELECT * FROM item_watchlist")) {
+                    $rowcount = mysqli_num_rows($query);
                     if (intval($rowcount) <= 100) {
                         mysqli_query($this->con, "INSERT INTO item_watchlist (id) VALUES($id) ON DUPLICATE KEY UPDATE id=$id");
                         echo $id;
                     } else {
                         echo "n";
                     }
-                    mysqli_free_result($result);
                 }
             } else {
                 echo "ID is required";
