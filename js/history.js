@@ -73,9 +73,15 @@ var getUrlParameter = function getUrlParameter(sParam) {
 };
 
 function convertToCoin(money) {
-    var g = 0, s = 0, c = 0;
-    c = money.slice(-2);
-    s = money.slice(-4, -2);
-    g = money.slice(0, -4);
-    return g + " Gold " + s + " Silver " + c + " Copper";
+    var c = money.slice(-2);
+    var s = money.slice(-4, -2);
+    var g = money.slice(0, -4);
+    var result = "";
+    if (g !== "")
+        result += g + " Gold ";
+    if (s !== "")
+        result += s + " Silver ";
+    if (c !== "")
+        result += c + " Copper ";
+    return result;
 }
